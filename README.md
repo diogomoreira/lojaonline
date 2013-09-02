@@ -1,4 +1,4 @@
-lojaonline
+Loja Online (C# Practice)
 ==========
 
-C# practice from web development classes
+This is just a C# practice from web development classes.
