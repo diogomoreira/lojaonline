@@ -1,0 +1,13 @@
+﻿@model List<LojaOnline.Comum.Categoria>
+@{
+    ViewBag.Title = "Listar";
+}
+
+<h2>Todos os produtos</h2>
+
+<ul>
+    @foreach (LojaOnline.Comum.Categoria categoria in @Model)
+    {
+        <li>@categoria.Nome</li>
+    }
+</ul>

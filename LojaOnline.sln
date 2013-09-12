@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LojaOnline.Console", "LojaOnline.Console\LojaOnline.Console.csproj", "{8478B569-3D29-4B99-9A00-F93A4C195771}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LojaOnline.Comum", "LojaOnline.Comum\LojaOnline.Comum.csproj", "{C01EA156-38A0-4E4C-AE55-56A12E23E155}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LojaOnline.MVC", "LojaOnline.MVC\LojaOnline.MVC.csproj", "{88691B1A-F1CB-43C3-97A8-181066A6CF87}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8478B569-3D29-4B99-9A00-F93A4C195771}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8478B569-3D29-4B99-9A00-F93A4C195771}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8478B569-3D29-4B99-9A00-F93A4C195771}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8478B569-3D29-4B99-9A00-F93A4C195771}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C01EA156-38A0-4E4C-AE55-56A12E23E155}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C01EA156-38A0-4E4C-AE55-56A12E23E155}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C01EA156-38A0-4E4C-AE55-56A12E23E155}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C01EA156-38A0-4E4C-AE55-56A12E23E155}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88691B1A-F1CB-43C3-97A8-181066A6CF87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88691B1A-F1CB-43C3-97A8-181066A6CF87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88691B1A-F1CB-43C3-97A8-181066A6CF87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88691B1A-F1CB-43C3-97A8-181066A6CF87}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

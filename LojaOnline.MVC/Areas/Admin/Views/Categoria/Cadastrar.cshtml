@@ -1,0 +1,12 @@
+﻿@model LojaOnline.Comum.Categoria
+@{
+    ViewBag.Title = "Cadastrar";
+}
+<h2>Cadastrar Categoria</h2>
+@using (Html.BeginForm("salvar", "categoria"))
+{
+    @Html.EditorForModel()
+    <input type="submit" value="Salvar" />
+}
+
+

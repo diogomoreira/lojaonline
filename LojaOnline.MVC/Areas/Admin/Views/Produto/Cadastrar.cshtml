@@ -1,0 +1,15 @@
+﻿@model LojaOnline.Comum.Produto
+@{
+    ViewBag.Title = "Cadastrar";
+    IList <SelectListItem> items = (IList<SelectListItem>)ViewBag.Categorias;
+}
+
+<h2>Cadastrar Novo Produto</h2>
+@using (Html.BeginForm("Salvar", "Produto"))
+{
+    @Html.HiddenFor(x=>x.Codigo)
+    @Html.TextBoxFor(x=>x.Nome)
+    @Html.TextBoxFor(x=>x.Preco)
+    @Html.DropDownListFor(x => x.Categoria.Codigo, items)
+    <input type="submit" value="Enviar" />
+}

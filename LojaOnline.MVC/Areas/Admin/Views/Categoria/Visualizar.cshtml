@@ -1,0 +1,14 @@
+﻿@model List<LojaOnline.Comum.Produto>
+@{
+    ViewBag.Title = "Visualizar";
+}
+
+<h2>Visualizar @ViewBag.Categoria.Nome</h2>
+
+<ul>
+@foreach(LojaOnline.Comum.Produto produto in Model)
+{
+    <li>@Html.ActionLink(produto.Nome, "visualizar", "produto", new {id = produto.Codigo}, new{ }) </li>
+    
+}
+</ul>

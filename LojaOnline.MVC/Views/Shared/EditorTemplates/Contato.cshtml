@@ -1,0 +1,11 @@
+﻿@model LojaOnline.MVC.Models.Contato
+
+@Html.LabelFor(x=>x.Nome)
+@Html.TextBoxFor(x=>x.Nome)
+@Html.ValidationMessageFor(x=>x.Nome)
+
+<br />
+
+@Html.LabelFor(x=>x.Texto)
+@Html.TextAreaFor(x=>x.Texto)
+@Html.ValidationMessageFor(x=>x.Texto)
