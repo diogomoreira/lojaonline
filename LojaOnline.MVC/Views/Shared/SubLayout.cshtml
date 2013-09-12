@@ -2,7 +2,7 @@
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 @section title {
-    SubLayout
+    Loja Online
 }
 @section menu{
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -15,14 +15,24 @@
             </button>
             <a class="navbar-brand" href="/">Loja Online</a>
         </div>
-        <div class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/categoria">Categorias</a></li>
-                <li><a href="/produto">Produtos</a></li>
-                <li><a href="/admin/produto/cadastrar">Cadastrar Produtos</a></li>
-                <li><a href="/admin/categoria/cadastrar">Cadastrar Categoria</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categorias<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/categoria/listar">Listar</a></li>
+                        <li><a href="/admin/categoria/cadastrar">Cadastrar</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Produtos<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/produto/listar">Listar</a></li>
+                        <li><a href="/admin/produto/cadastrar">Cadastrar</a></li>
+                    </ul>
+                </li>
             </ul>
-        </div><!--/.nav-collapse -->
+        </div>
         </div>
     </div>
 }

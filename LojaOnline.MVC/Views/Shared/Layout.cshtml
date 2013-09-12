@@ -4,25 +4,17 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="@Url.Content("~/Content/assets/ico/favicon.png")">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        
+        <title>iDez > @RenderSection("title",false)</title>
+        <link href="@Url.Content("~/Content/dist/css/bootstrap.css")" rel="stylesheet" />
+        <link rel="shortcut icon" href="@Url.Content("~/Content/assets/ico/favicon.png")" />
 
-    <title>iDez > @RenderSection("title",false)</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="@Url.Content("~/Content/dist/css/bootstrap.css")" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="@Url.Content("~/Content/starter-template.css")" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-        <script src="~/Content/assets/js/html5shiv.js"></script>
-        <script src="~/Content/assets/js/respond.min.js"></script>
-    <![endif]-->
+        <!-- Custom styles for this template -->
+        <link href="@Url.Content("~/Content/starter-template.css")" rel="stylesheet" />
     </head>
     <body>
         @RenderSection("menu")
@@ -34,7 +26,7 @@
             </div>
         </div>
 
-        <script src="../../assets/js/jquery.js"></script>
-        <script src="../../dist/js/bootstrap.min.js"></script>
+        <script src="@Url.Content("~/Content/assets/js/jquery.js")"></script>
+        <script src="@Url.Content("~/Content/dist/js/bootstrap.min.js")"></script>
     </body>
 </html>
