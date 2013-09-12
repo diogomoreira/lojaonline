@@ -19,19 +19,6 @@ namespace LojaOnline.MVC.Controllers
 
         public ActionResult Index()
         {
-            using (LojaOnlineEntities context = new LojaOnlineEntities())
-            {
-                Categoria categoria = context.Categorias.FirstOrDefault();
-
-                Produto produto = new Produto();
-                produto.Nome = "Livro de ASP.NET MVC 4";
-                produto.Categoria = categoria;
-                produto.Preco = (decimal)546.22;
-
-                context.Produtos.Add(produto);
-
-                context.SaveChanges();
-            }
             return View();
         }
 
