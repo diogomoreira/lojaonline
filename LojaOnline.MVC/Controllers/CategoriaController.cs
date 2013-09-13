@@ -10,11 +10,11 @@ namespace LojaOnline.MVC.Controllers
 {
     public class CategoriaController : Controller
     {
-        public Repositorio _repositorio { get; set; }
+        public CategoriaRepositorio _repositorio { get; set; }
 
         public CategoriaController()
         {
-            _repositorio = new Repositorio();
+            _repositorio = new CategoriaRepositorio();
         }
 
         public ActionResult Index()
@@ -25,7 +25,7 @@ namespace LojaOnline.MVC.Controllers
 
         public ActionResult Listar()
         {
-            List<Categoria> categorias = _repositorio.ObterCategorias();
+            List<Categoria> categorias = _repositorio.Listar();
             return View(categorias);
         }
 

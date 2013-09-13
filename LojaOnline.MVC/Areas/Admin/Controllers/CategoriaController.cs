@@ -10,32 +10,16 @@ namespace LojaOnline.MVC.Areas.Admin.Controllers
 {
     public class CategoriaController : Controller
     {
-        public Repositorio _repositorio { get; set; }
+        public CategoriaRepositorio _repositorio { get; set; }
 
         public CategoriaController()
         {
-            _repositorio = new Repositorio();
+            _repositorio = new CategoriaRepositorio();
         }
 
         public ActionResult Index()
         {
             return View();
-        }
-
-        public ActionResult Visualizar(long id)
-        {
-            Categoria categoria = _repositorio.ObterCategorias().Where(x => x.Codigo == id).Single();
-            if (categoria != null)
-            {
-                ViewBag.Categoria = categoria;
-                List<Produto> produtos = _repositorio.ObterProdutos();
-                return View(produtos);
-            }
-            else
-            {
-                return View("PaginaNaoEncontrada");
-            }
-
         }
 
         public ActionResult Salvar(Categoria cat)
@@ -51,12 +35,6 @@ namespace LojaOnline.MVC.Areas.Admin.Controllers
         public ActionResult Cadastrar()
         {
             return View();
-        }
-
-        public ActionResult Listar()
-        {
-            List<Categoria> categorias = _repositorio.ObterCategorias();
-            return View(categorias);
         }
 
     }
