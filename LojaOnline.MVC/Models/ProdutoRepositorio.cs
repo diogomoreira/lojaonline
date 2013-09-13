@@ -33,5 +33,21 @@ namespace LojaOnline.MVC.Models
                 return context.Produtos.ToList();
             }
         }
+
+        public List<ProdutoCategoria> ListarProdutos()
+        {
+            using (LojaOnlineEntities context = new LojaOnlineEntities())
+            {
+                var items = from p in context.Produtos
+                            select new ProdutoCategoria()
+                            {
+                                CodigoProduto = p.Codigo,
+                                Nome = p.Nome,
+                                Preco = p.Preco,
+                                NomeCategoria = p.Categoria.Nome
+                            };
+                return items.ToList();
+            }
+        }
     }
 }

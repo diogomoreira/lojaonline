@@ -26,18 +26,7 @@ namespace LojaOnline.MVC.Controllers
 
         public ActionResult Listar()
         {
-            var items = from p in _repositorioProduto.Listar()
-                        from c in _repositorioCategoria.Listar()
-                        where p.CodigoCategoria == c.Codigo
-                        select new ProdutoCategoria()
-                        {
-                            CodigoProduto = p.Codigo,
-                            Nome = p.Nome,
-                            Preco = p.Preco,
-                            NomeCategoria = c.Nome
-                        };
-
-            ViewBag.Produtos = items.ToList();
+            ViewBag.Produtos = _repositorioProduto.ListarProdutos();
             return View();
         }
 
