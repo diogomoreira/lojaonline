@@ -1,5 +1,8 @@
-﻿@{
+﻿@model LojaOnline.Comum.Produto
+@{
     ViewBag.Title = "Salvar";
 }
-
-<h2>Salvar</h2>
+<h2>Produto cadastrado!</h2>
+@Html.DisplayForModel()
+<br />
+@Html.ActionLink("Listar Categorias", "Listar", "Categoria", new { Area = "" }, new { })

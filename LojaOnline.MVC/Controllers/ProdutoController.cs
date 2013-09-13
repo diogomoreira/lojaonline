@@ -10,22 +10,35 @@ namespace LojaOnline.MVC.Controllers
 {
     public class ProdutoController : Controller
     {
-        public Repositorio _repositorio { get; set; }
+        public CategoriaRepositorio _repositorioCategoria { get; set; }
+        public ProdutoRepositorio _repositorioProduto { get; set; }
 
         public ProdutoController()
         {
-            _repositorio = new Repositorio();
+            _repositorioCategoria = new CategoriaRepositorio();
+            _repositorioProduto = new ProdutoRepositorio();
         }
 
         public ActionResult Index()
         {
-            return RedirectToAction("listar");
+            return RedirectToAction("Listar");
         }
 
         public ActionResult Listar()
         {
-            List<Produto> produtos = _repositorio.ObterProdutos();
-            return View(produtos);
+            var items = from p in _repositorioProduto.Listar()
+                        from c in _repositorioCategoria.Listar()
+                        where p.CodigoCategoria == c.Codigo
+                        select new ProdutoCategoria()
+                        {
+                            CodigoProduto = p.Codigo,
+                            Nome = p.Nome,
+                            Preco = p.Preco,
+                            NomeCategoria = c.Nome
+                        };
+
+            ViewBag.Produtos = items.ToList();
+            return View();
         }
 
     }

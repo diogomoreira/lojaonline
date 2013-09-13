@@ -1,13 +1,31 @@
-﻿@model List<LojaOnline.Comum.Produto>
+﻿@model List<LojaOnline.MVC.Models.ProdutoCategoria>
 @{
     ViewBag.Title = "Listar";
 }
+<div class="panel panel-default" style="margin: 0 auto; width: 350px;">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Todas as categorias</div>
 
-<h2>Todos os produtos</h2>
-
-<ul>
-    @foreach (LojaOnline.Comum.Produto produto in @Model)
-    {
-        <li>@produto.Nome</li>
-    }
-</ul>
+    <!-- Table -->
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Nome da Categoria</th>
+            <th>Preço</th>
+            <th>Categoria</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (LojaOnline.MVC.Models.ProdutoCategoria produto in @Model)
+        {
+            <tr>
+                <td style="text-align: center;">@produto.CodigoProduto</td>
+                <td style="text-align: left;">@produto.Nome</td>
+                <td style="text-align: left;">@produto.Preco</td>
+                <td style="text-align: left;">@produto.NomeCategoria</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
