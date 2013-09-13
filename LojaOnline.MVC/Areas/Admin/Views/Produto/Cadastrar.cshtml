@@ -7,9 +7,14 @@
 <h2>Cadastrar Novo Produto</h2>
 @using (Html.BeginForm("Salvar", "Produto"))
 {
+    
     @Html.HiddenFor(x=>x.Codigo)
+    @Html.LabelFor(x=>x.Nome)
     @Html.TextBoxFor(x=>x.Nome)
+    <br />
+    @Html.LabelFor(x=>x.Preco)
     @Html.TextBoxFor(x=>x.Preco)
+    <br />
     @Html.DropDownListFor(x => x.Categoria.Codigo, items)
     <input type="submit" value="Enviar" />
 }

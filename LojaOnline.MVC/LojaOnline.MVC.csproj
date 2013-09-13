@@ -134,6 +134,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoriaController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProdutoController.cs" />
+    <Compile Include="Models\CategoriaRepositorio.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="Global.asax.cs">
@@ -142,6 +143,8 @@
     <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Models\Contato.cs" />
     <Compile Include="Models\LojaOnlineEntities.cs" />
+    <Compile Include="Models\ProdutoCategoria.cs" />
+    <Compile Include="Models\ProdutoRepositorio.cs" />
     <Compile Include="Models\Repositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -281,6 +284,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\DisplayTemplates\Produto.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
