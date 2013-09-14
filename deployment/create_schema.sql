@@ -10,5 +10,5 @@ CREATE TABLE loja_produtos (
 	preco NUMERIC(8,2) NOT NULL,
 	cod_categoria INT8 NOT NULL,
 	PRIMARY KEY (codigo),
-	FOREIGN KEY(cod_categoria) REFERENCES loja_categorias(codigo)
+	FOREIGN KEY(cod_categoria) REFERENCES loja_categorias(codigo) ON DELETE CASCADE
 );
