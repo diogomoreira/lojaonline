@@ -3,9 +3,6 @@
     ViewBag.Title = "Cadastrar";
     IList <SelectListItem> items = (IList<SelectListItem>)ViewBag.Categorias;
 }
-
-
-
 <h2>Cadastrar Novo Produto</h2>
 @using (Html.BeginForm("Salvar", "Produto"))
 {
@@ -18,5 +15,4 @@
     @Html.TextBoxFor(x=>x.Preco)
     <br />
     @Html.DropDownListFor(x => x.Categoria.Codigo, items)
-    <input type="submit" value="Salvar" />
 }

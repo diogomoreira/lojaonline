@@ -1,0 +1,16 @@
+﻿@model LojaOnline.MVC.Controllers.FormLogin
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(x=>x.Login)
+    @Html.TextBoxFor(x=>x.Login)
+    <br />
+    @Html.LabelFor(x=>x.Senha)
+    @Html.PasswordFor(x=>x.Senha)
+    <br />
+    <input type="submit" value="Login"/>
+}

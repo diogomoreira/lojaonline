@@ -1,21 +1,21 @@
 ﻿@model List<LojaOnline.MVC.Models.ProdutoCategoria>
 @{
-    ViewBag.Title = "Listar";
+    ViewBag.Title = "Listar Produtos";
     List<LojaOnline.MVC.Models.ProdutoCategoria> produtos = ViewBag.Produtos;
 }
+<h2>Listar Produtos por Categoria</h2>
 <div class="panel panel-default">
     <!-- Default panel contents -->
-    <div class="panel-heading">Todas os produtos</div>
+    <div class="panel-heading">Produtos da categoria</div>
 
     <!-- Table -->
     <table class="table">
         <thead>
         <tr>
-            <th>#</th>
-            <th>Nome do Produto</th>
+            <th style="text-align: center;">#</th>
+            <th>Nome do produto</th>
             <th>Preço</th>
-            <th>Categoria</th>
-            <th>Ações</th>
+            <th style="text-align: center;">Ações</th>
         </tr>
         </thead>
         <tbody>
@@ -25,16 +25,12 @@
                 <td style="text-align: center;">@produto.CodigoProduto</td>
                 <td style="text-align: left;">@produto.Nome</td>
                 <td style="text-align: left;">@produto.Preco</td>
-                <td style="text-align: left;">@produto.NomeCategoria</td>
                 <td style="text-align: center;">
                     <button type="button" class="btn btn-default">
-                        @Html.ActionLink("Visualizar", "Visualizar", new { Area = "", Id = @produto.CodigoProduto})
+                        @Html.ActionLink("Visualizar", "visualizar", "Produto", new { Area = "", Id = @produto.CodigoProduto},null)
                     </button>
                     <button type="button" class="btn btn-default">
-                        @Html.ActionLink("Editar", "Editar", new { Area = "Admin", Id = @produto.CodigoProduto})
-                    </button>
-                    <button type="button" class="btn btn-default">
-                        @Html.ActionLink("Excluir", "Remover", new { Area = "Admin", Id = @produto.CodigoProduto})
+                        @Html.ActionLink("Editar", "Editar", "Produto", new { Area = "Admin", Id = @produto.CodigoProduto},null)
                     </button>
                 </td>
             </tr>

@@ -3,4 +3,24 @@
     ViewBag.Title = "Visualizar";
 }
 
-<h2>Produto @Model.Nome</h2>
+<h2>@Model.Nome</h2>
+<div class="panel panel-default">
+
+    <!-- Table -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="text-align: center;">Identificação</th>
+                <th>Nome do produto</th>
+                <th>Preço</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align: center;">@Model.Codigo</td>
+                <td style="text-align: left;">@Model.Nome</td>
+                <td style="text-align: left;">@Model.Preco</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

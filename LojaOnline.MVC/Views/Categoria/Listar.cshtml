@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Listar";
 }
-<div class="panel panel-default" style="margin: 0 auto; width: 350px;">
+<div class="panel panel-default" style="margin: 0 auto;">
     <!-- Default panel contents -->
     <div class="panel-heading">Todas as categorias</div>
 
@@ -10,8 +10,9 @@
     <table class="table">
         <thead>
         <tr>
-            <th>#</th>
+            <th style="text-align: center;">#</th>
             <th>Nome da Categoria</th>
+            <th style="text-align: center;">Ações</th>
         </tr>
         </thead>
         <tbody>
@@ -20,6 +21,16 @@
             <tr>
                 <td style="text-align: center;">@categoria.Codigo</td>
                 <td style="text-align: left;">@categoria.Nome</td>
+                <td style="text-align: center;">
+                    <button type="button" class="btn btn-default">
+                        @Html.ActionLink("Visualizar Produtos", "ListarProdutos", new { Area = "", Id = @categoria.Codigo})
+                    </button>
+                    @if(Request.IsAuthenticated) {
+                        <button type="button" class="btn btn-default">
+                            @Html.ActionLink("Excluir", "Remover", new { Area = "Admin", Id = @categoria.Codigo})
+                        </button>
+                    }
+                </td>
             </tr>
         }
         </tbody>
