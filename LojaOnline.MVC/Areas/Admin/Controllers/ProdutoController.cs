@@ -8,15 +8,16 @@ using System.Web.Mvc;
 
 namespace LojaOnline.MVC.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Administrador")]
     public class ProdutoController : Controller
     {
-        public CategoriaRepositorio _repositorioCategoria { get; set; }
-        public ProdutoRepositorio _repositorioProduto { get; set; }
+        private CategoriaRepositorio _repositorioCategoria;
+        private ProdutoRepositorio _repositorioProduto;
 
-        public ProdutoController()
+        public ProdutoController(ProdutoRepositorio produtoRepositorio, CategoriaRepositorio categoriaRepositorio)
         {
-            _repositorioCategoria = new CategoriaRepositorio();
-            _repositorioProduto = new ProdutoRepositorio();
+            _repositorioCategoria = categoriaRepositorio;
+            _repositorioProduto = produtoRepositorio;
         }
 
         public ActionResult Index()
@@ -65,6 +66,33 @@ namespace LojaOnline.MVC.Areas.Admin.Controllers
                 _repositorioProduto.AddProduto(p);
                 return View(p);
             }
+        }
+
+        public ActionResult Editar(long Id)
+        {
+            var items = from c in _repositorioCategoria.Listar()
+                        select new SelectListItem()
+                        {
+                            Text = c.Nome,
+                            Value = c.Codigo.ToString()
+                        };
+
+            ViewBag.Categorias = items.ToList();
+            Produto p = _repositorioProduto.RecuperarProduto(Id);
+            return View(p);
+        }
+
+        [HttpPost]
+        public ActionResult Atualizar(Produto p)
+        {
+            _repositorioProduto.Atualizar(p);
+            return RedirectToAction("Listar", "Produto", new { Area = "" });
+        }
+
+        public ActionResult Remover(long Id)
+        {
+            _repositorioProduto.RemoveProduto(Id);
+            return RedirectToAction("Listar", "Produto", new { Area = "" });
         }
 
     }

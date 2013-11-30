@@ -8,13 +8,14 @@ using System.Web.Mvc;
 
 namespace LojaOnline.MVC.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Administrador")]
     public class CategoriaController : Controller
     {
-        public CategoriaRepositorio _repositorio { get; set; }
+        private CategoriaRepositorio _repositorio;
 
-        public CategoriaController()
+        public CategoriaController(CategoriaRepositorio repositorio)
         {
-            _repositorio = new CategoriaRepositorio();
+            _repositorio = repositorio;
         }
 
         public ActionResult Index()
@@ -35,6 +36,12 @@ namespace LojaOnline.MVC.Areas.Admin.Controllers
         public ActionResult Cadastrar()
         {
             return View();
+        }
+
+        public ActionResult Remover(long Id)
+        {
+            _repositorio.RemoveCategoria(Id);
+            return RedirectToAction("Listar", "Categoria", new { Area = "" });
         }
 
     }

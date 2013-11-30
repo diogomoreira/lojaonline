@@ -8,46 +8,63 @@ namespace LojaOnline.MVC.Models
 {
     public class ProdutoRepositorio
     {
-        public void AddProduto(Produto produto)
+        private LojaOnlineEntities _contexto;
+
+        public ProdutoRepositorio(LojaOnlineEntities contexto)
         {
-            using (LojaOnlineEntities context = new LojaOnlineEntities())
-            {
-                context.Produtos.Add(produto);
-                context.SaveChanges();
-            }
+            _contexto = contexto;
         }
 
-        public void RemoveProduto(Produto produto)
+        public void AddProduto(Produto produto)
         {
-            using (LojaOnlineEntities context = new LojaOnlineEntities())
-            {
-                context.Produtos.Remove(produto);
-                context.SaveChanges();
-            }
+            Categoria cat = _contexto.Categorias.Where(x => x.Codigo == produto.Categoria.Codigo).FirstOrDefault();
+            produto.Categoria = cat;
+            _contexto.Produtos.Add(produto);
+            _contexto.SaveChanges();
+        }
+
+        public void RemoveProduto(long Id)
+        {
+            Produto produto = _contexto.Produtos.Where(x => x.Codigo == Id).FirstOrDefault();
+            _contexto.Produtos.Remove(produto);
+            _contexto.SaveChanges();
         }
 
         public List<Produto> Listar()
         {
-            using (LojaOnlineEntities context = new LojaOnlineEntities())
-            {
-                return context.Produtos.ToList();
-            }
+            return _contexto.Produtos.ToList();
         }
 
         public List<ProdutoCategoria> ListarProdutos()
         {
-            using (LojaOnlineEntities context = new LojaOnlineEntities())
-            {
-                var items = from p in context.Produtos
-                            select new ProdutoCategoria()
-                            {
-                                CodigoProduto = p.Codigo,
-                                Nome = p.Nome,
-                                Preco = p.Preco,
-                                NomeCategoria = p.Categoria.Nome
-                            };
-                return items.ToList();
-            }
+            var items = from p in _contexto.Produtos
+                        select new ProdutoCategoria()
+                        {
+                            CodigoProduto = p.Codigo,
+                            Nome = p.Nome,
+                            Preco = p.Preco,
+                            NomeCategoria = p.Categoria.Nome
+                        };
+            return items.ToList();
+        }
+
+        public Produto RecuperarProduto(long Id)
+        {
+            var items = from p in _contexto.Produtos
+                        where p.Codigo == Id
+                        select p;
+            return items.SingleOrDefault();
+        }
+
+        public void Atualizar(Produto produto)
+        {
+            Produto produtoBanco = _contexto.Produtos.Where(x => x.Codigo == produto.Codigo).FirstOrDefault();
+            Categoria categoriaBanco = _contexto.Categorias.Where(x => x.Codigo == produto.Categoria.Codigo).FirstOrDefault();
+
+            produtoBanco.Nome = produto.Nome;
+            produtoBanco.Preco = produto.Preco;
+            produtoBanco.Categoria = categoriaBanco;
+            _contexto.SaveChanges();
         }
     }
 }

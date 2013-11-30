@@ -10,11 +10,11 @@ namespace LojaOnline.MVC.Controllers
 {
     public class CategoriaController : Controller
     {
-        public CategoriaRepositorio _repositorio { get; set; }
+        private CategoriaRepositorio _repositorio;
 
-        public CategoriaController()
+        public CategoriaController(CategoriaRepositorio repositorio)
         {
-            _repositorio = new CategoriaRepositorio();
+            _repositorio = repositorio;
         }
 
         public ActionResult Index()
@@ -27,6 +27,22 @@ namespace LojaOnline.MVC.Controllers
         {
             List<Categoria> categorias = _repositorio.Listar();
             return View(categorias);
+        }
+
+        public ActionResult Visualizar(long Id)
+        {
+            return View(_repositorio.RecuperarCategoria(Id));
+        }
+
+        public ActionResult ListarProdutos(long Id)
+        {
+            List<ProdutoCategoria> produtosDaCategoria = _repositorio.ListarProdutos(Id);
+            if (produtosDaCategoria.Count() == 0)
+            {
+                return View("SemRegistro");
+            }
+            ViewBag.Produtos = produtosDaCategoria;
+            return View();
         }
 
     }

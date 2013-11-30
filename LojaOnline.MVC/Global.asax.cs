@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.Security;
 
 namespace LojaOnline.MVC
 {
@@ -19,6 +20,20 @@ namespace LojaOnline.MVC
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            Bootstrapper.Initialise();
+
+            //if (Roles.GetAllRoles().Length == 0)
+            //{
+            //    Roles.CreateRole("Administrador");
+            //    Roles.CreateRole("Cliente");
+
+            //    MembershipUser user = Membership.CreateUser("admin", "senha", "admin@domain.com");
+            //    if (user != null)
+            //    {
+            //        Roles.AddUserToRole(user.UserName, "Administrador");
+            //    }
+            //}
         }
     }
 }

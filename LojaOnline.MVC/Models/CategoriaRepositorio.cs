@@ -9,30 +9,51 @@ namespace LojaOnline.MVC.Models
 {
     public class CategoriaRepositorio
     {
-        public void AddCategoria(Categoria categoria)
+        private LojaOnlineEntities _contexto;
+
+        public CategoriaRepositorio(LojaOnlineEntities contexto)
         {
-            using (LojaOnlineEntities context = new LojaOnlineEntities())
-            {
-                context.Categorias.Add(categoria);
-                context.SaveChanges();
-            }
+            _contexto = contexto;
         }
 
-        public void RemoveCategoria(Categoria categoria)
+        public void AddCategoria(Categoria categoria)
         {
-            using (LojaOnlineEntities context = new LojaOnlineEntities())
-            {
-                context.Categorias.Remove(categoria);
-                context.SaveChanges();
-            }
+            _contexto.Categorias.Add(categoria);
+            _contexto.SaveChanges();
+        }
+
+        public void RemoveCategoria(long IdCategoria)
+        {
+            Categoria categoria = _contexto.Categorias.Where(x => x.Codigo == IdCategoria).FirstOrDefault();
+            _contexto.Categorias.Remove(categoria);
+            _contexto.SaveChanges();
         }
 
         public List<Categoria> Listar()
         {
-            using (LojaOnlineEntities context = new LojaOnlineEntities())
-            {
-                return context.Categorias.ToList();
-            }
+            return _contexto.Categorias.ToList();
+        }
+
+        public Categoria RecuperarCategoria(long Id)
+        {
+            var categorias = from c in _contexto.Categorias
+                        where c.Codigo == Id
+                        select c;
+            return categorias.SingleOrDefault();
+        }
+
+        public List<ProdutoCategoria> ListarProdutos(long idCategoria)
+        {
+            var produtos = from p in _contexto.Produtos
+                           where p.CodigoCategoria == idCategoria
+                           select new ProdutoCategoria()
+                           {
+                               CodigoProduto = p.Codigo,
+                               Nome = p.Nome,
+                               Preco = p.Preco,
+                               NomeCategoria = p.Categoria.Nome
+                           };
+            return produtos.ToList();
         }
     }
 }
