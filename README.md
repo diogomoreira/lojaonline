@@ -1,4 +1,4 @@
 Loja Online (C# Practice)
 ==========
 
-This is just a C# practice from web development classes.
+C# + ASP.NET MVC 4 practice from web development classes.
